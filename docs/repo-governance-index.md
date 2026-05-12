@@ -96,7 +96,17 @@ Recommended assets:
 
 Use [build-and-packaging-guidelines.md](build-and-packaging-guidelines.md).
 
-### 2.5 Hard Constraints
+### 2.5 Brand Management
+
+Recommended assets:
+
+- brand-management guide
+- `brands/<brand>/config.json` examples
+- shared brand helper
+
+Use [brand-management-guidelines.md](brand-management-guidelines.md).
+
+### 2.6 Hard Constraints
 
 Recommended assets:
 
@@ -106,11 +116,21 @@ Recommended assets:
 
 Use [postmortem-derived-constraints.md](postmortem-derived-constraints.md).
 
-### 2.6 Frontend Guidelines
+### 2.7 Updater and Publishing
+
+Recommended assets:
+
+- updater and publishing guide
+- publish workflow
+- builder publish configuration sample
+
+Use [updater-and-publishing-guidelines.md](updater-and-publishing-guidelines.md).
+
+### 2.8 Frontend Guidelines
 
 Use [frontend-guidelines.md](frontend-guidelines.md).
 
-### 2.7 Backend Guidelines
+### 2.9 Backend Guidelines
 
 Use [backend-guidelines.md](backend-guidelines.md).
 
@@ -122,8 +142,10 @@ At minimum, a serious scaffold repository should define:
 - frontend guidelines
 - backend guidelines
 - build and packaging guidelines
+- brand management guidelines
 - postmortem-derived hard constraints
 - release and versioning guidelines
+- updater and publishing guidelines
 - CI/CD guidelines
 - one minimal runnable template
 - release and CI/CD workflows
@@ -141,6 +163,8 @@ It should avoid embedding business-specific operating guidance unless that guida
 4. Frontend guidelines
 5. Backend guidelines
 6. Build and packaging guidelines
-7. Postmortem-derived hard constraints
-8. Release and versioning guidelines
-9. CI/CD guidelines
+7. Brand management guidelines
+8. Postmortem-derived hard constraints
+9. Release and versioning guidelines
+10. Updater and publishing guidelines
+11. CI/CD guidelines

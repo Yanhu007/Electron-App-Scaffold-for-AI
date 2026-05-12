@@ -18,5 +18,7 @@ module.exports = {
   config,
   paths: {
     root: brandRoot,
+    rendererLogo: path.join(brandRoot, 'logo.svg'),
+    buildResources: path.join(brandRoot, 'build'),
   },
 };

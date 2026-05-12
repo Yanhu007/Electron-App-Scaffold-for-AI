@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="KOSMOS Scaffold logo">
+  <rect width="160" height="160" rx="28" fill="#102a43"/>
+  <circle cx="80" cy="80" r="42" fill="#2cb1bc"/>
+  <path d="M80 38 98 80 80 122 62 80Z" fill="#f0b429"/>
+</svg>

@@ -1,0 +1,32 @@
+name: Template Impact Check
+
+on:
+  pull_request:
+    branches: ['**']
+    paths:
+      - 'template/src/**'
+      - '.github/workflows/template-impact-check.yml'
+
+jobs:
+  template-impact-check:
+    name: Template Impact Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package-lock.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Run impact check sample
+        working-directory: template
+        run: npm run check:impact -- src/main/main.ts src/shared/app-contract.ts

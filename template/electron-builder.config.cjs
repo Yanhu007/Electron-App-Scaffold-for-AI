@@ -8,9 +8,21 @@ module.exports = {
   },
   directories: {
     output: 'release',
-    buildResources: 'build',
+    buildResources: brandConfig.paths.buildResources,
   },
   files: ['dist-electron/**/*', 'package.json'],
+  publish: [
+    {
+      provider: 'github',
+      owner: 'example-org',
+      repo: 'electron-app-scaffold-for-ai',
+      releaseType: 'release',
+    },
+  ],
+  extraMetadata: {
+    name: brandConfig.name,
+    buildBrand: brandConfig.name,
+  },
   win: {
     target: ['nsis'],
     artifactName: `${brandConfig.config.filenamePrefix}-\${version}-win-\${arch}.\${ext}`,
@@ -28,5 +40,9 @@ module.exports = {
     perMachine: false,
     allowToChangeInstallationDirectory: true,
     shortcutName: brandConfig.config.shortcutName,
+  },
+  releaseInfo: {
+    releaseName: `${brandConfig.config.productName} \${version}`,
+    releaseNotes: 'See generated release notes artifact for details.',
   },
 };

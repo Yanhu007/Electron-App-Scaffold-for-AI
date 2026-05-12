@@ -25,8 +25,10 @@ This repo does not prescribe any specific business workflow, vertical domain, or
 - [Frontend Guidelines](docs/frontend-guidelines.md)
 - [Backend Guidelines](docs/backend-guidelines.md)
 - [Build and Packaging Guidelines](docs/build-and-packaging-guidelines.md)
+- [Brand Management Guidelines](docs/brand-management-guidelines.md)
 - [Postmortem-Derived Constraints](docs/postmortem-derived-constraints.md)
 - [Release and Versioning Guidelines](docs/release-and-versioning-guidelines.md)
+- [Updater and Publishing Guidelines](docs/updater-and-publishing-guidelines.md)
 - [CI/CD Guidelines](docs/cicd-guidelines.md)
 - [Repository Governance](docs/repo-governance-index.md)
 - [.github/copilot-instructions.md](.github/copilot-instructions.md)
@@ -38,10 +40,12 @@ This repo does not prescribe any specific business workflow, vertical domain, or
 3. Then read [Frontend Guidelines](docs/frontend-guidelines.md)
 4. Then read [Backend Guidelines](docs/backend-guidelines.md)
 5. Then read [Build and Packaging Guidelines](docs/build-and-packaging-guidelines.md)
-6. Then read [Postmortem-Derived Constraints](docs/postmortem-derived-constraints.md)
-7. Then read [Release and Versioning Guidelines](docs/release-and-versioning-guidelines.md)
-8. Then read [CI/CD Guidelines](docs/cicd-guidelines.md)
-9. Use [Repository Governance](docs/repo-governance-index.md) as the operating index for repo structure, CI/CD, release, and contribution rules
+6. Then read [Brand Management Guidelines](docs/brand-management-guidelines.md)
+7. Then read [Postmortem-Derived Constraints](docs/postmortem-derived-constraints.md)
+8. Then read [Release and Versioning Guidelines](docs/release-and-versioning-guidelines.md)
+9. Then read [Updater and Publishing Guidelines](docs/updater-and-publishing-guidelines.md)
+10. Then read [CI/CD Guidelines](docs/cicd-guidelines.md)
+11. Use [Repository Governance](docs/repo-governance-index.md) as the operating index for repo structure, CI/CD, release, and contribution rules
 
 ## Intended Stack
 
@@ -64,6 +68,7 @@ This repository currently provides:
 - Frontend and backend decision rules
 - Repository governance guidance
 - Minimal brand-management and packaging scaffold assets
+- Updater and publishing scaffold guidance
 - A minimal runnable template with no business logic
 
 This repository does not yet provide:

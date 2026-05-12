@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="PM Studio Scaffold logo">
+  <rect width="160" height="160" rx="28" fill="#1f2933"/>
+  <rect x="36" y="36" width="88" height="88" rx="18" fill="#ef4e4e"/>
+  <path d="M58 104V56h23c14 0 23 7 23 20s-9 20-23 20H70v8Zm12-18h11c7 0 11-3 11-10s-4-10-11-10H70Z" fill="#fff5f5"/>
+</svg>
