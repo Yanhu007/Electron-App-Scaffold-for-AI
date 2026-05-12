@@ -31,6 +31,7 @@ Recommended baseline:
 - annotated or predictable version tags such as `v1.2.3`
 - one documented release path
 - one release-note generation path
+- scripted version bump commands such as `prepare:release:patch|minor|major`
 
 ## Don't
 

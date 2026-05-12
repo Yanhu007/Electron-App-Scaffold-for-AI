@@ -28,6 +28,12 @@ It does not include:
 2. Start the template with `npm run dev`
 3. Build the template with `npm run build`
 
+Additional scaffold commands:
+
+- `npm run build:vite`: alternate Vite production build path for migration phases
+- `npm run dev:wp`: example Webpack watch path when a project still keeps Webpack-based production tooling
+- `npm run prepare:release:patch|minor|major`: minimal version bump and changelog preparation flow
+
 ## Purpose of the Files
 
 - `package.json`: minimal scripts and dependencies

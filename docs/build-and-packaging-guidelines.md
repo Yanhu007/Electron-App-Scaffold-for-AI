@@ -55,6 +55,12 @@ When deciding dependency placement, prefer:
 - `dependencies` or `optionalDependencies` for runtime requirements
 - `devDependencies` for build tools, test tools, and non-runtime assets
 
+When deciding build strategy during a migration period, a valid transitional pattern is:
+
+- `dev` on Vite for iteration speed
+- `build` on Webpack for production stability
+- `build:vite` as an explicit migration path
+
 When deciding how to handle native modules, prefer:
 
 - explicit packaging guidance

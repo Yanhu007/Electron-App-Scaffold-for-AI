@@ -85,3 +85,9 @@ The next logical step for this repo is to add reusable scaffold assets such as:
 ## Minimal Template
 
 See [template/README.md](template/README.md) for the business-neutral runnable scaffold.
+
+The template now mirrors the current KOSMOS transition pattern more closely:
+
+- `dev` uses Vite
+- `build` uses Webpack
+- `build:vite` remains available as the migration path

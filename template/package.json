@@ -6,8 +6,20 @@
   "main": "dist-electron/main/main.js",
   "scripts": {
     "dev": "electron-vite dev",
-    "build": "electron-vite build",
-    "preview": "electron-vite preview"
+    "dev:full": "npm run dev",
+    "dev:wp": "concurrently \"npm run dev:wp:main\" \"npm run dev:wp:renderer\"",
+    "dev:wp:main": "webpack --config webpack.main.config.cjs --mode development --watch",
+    "dev:wp:renderer": "webpack --config webpack.renderer.config.cjs --mode development --watch",
+    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
+    "build:main": "webpack --config webpack.main.config.cjs --mode production",
+    "build:preload": "webpack --config webpack.preload.config.cjs --mode production",
+    "build:renderer": "webpack --config webpack.renderer.config.cjs --mode production",
+    "build:vite": "electron-vite build",
+    "preview": "electron-vite preview",
+    "prepare:release": "node scripts/prepare-release.mjs",
+    "prepare:release:patch": "node scripts/prepare-release.mjs patch",
+    "prepare:release:minor": "node scripts/prepare-release.mjs minor",
+    "prepare:release:major": "node scripts/prepare-release.mjs major"
   },
   "dependencies": {
     "electron": "^35.0.0",
@@ -20,8 +32,13 @@
     "@types/react-dom": "^18.3.1",
     "@swc/core": "^1.11.24",
     "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^9.2.1",
     "electron-vite": "^2.3.0",
+    "html-webpack-plugin": "^5.6.0",
     "typescript": "^5.8.3",
-    "vite": "^5.4.19"
+    "ts-loader": "^9.5.1",
+    "vite": "^5.4.19",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
   }
 }
