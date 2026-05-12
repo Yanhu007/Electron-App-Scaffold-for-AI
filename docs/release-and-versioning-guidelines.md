@@ -34,6 +34,11 @@ Recommended baseline:
 - scripted version bump commands such as `prepare:release:patch|minor|major`
 - one manual or gated release workflow that runs the same validation path before tagging
 
+For repositories with stricter release control, prefer splitting release automation into:
+
+- a prepare-release path that bumps version and generates notes
+- a publish-release path that validates the prepared state and creates the tag or release
+
 ## Don't
 
 - Do not mix business announcements with engineering release notes in the scaffold layer.

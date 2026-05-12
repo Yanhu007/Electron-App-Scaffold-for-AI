@@ -96,11 +96,21 @@ Recommended assets:
 
 Use [build-and-packaging-guidelines.md](build-and-packaging-guidelines.md).
 
-### 2.5 Frontend Guidelines
+### 2.5 Hard Constraints
+
+Recommended assets:
+
+- postmortem-derived constraints doc
+- hard-constraints review prompt
+- CI checks for any rule that can be enforced mechanically
+
+Use [postmortem-derived-constraints.md](postmortem-derived-constraints.md).
+
+### 2.6 Frontend Guidelines
 
 Use [frontend-guidelines.md](frontend-guidelines.md).
 
-### 2.6 Backend Guidelines
+### 2.7 Backend Guidelines
 
 Use [backend-guidelines.md](backend-guidelines.md).
 
@@ -112,6 +122,7 @@ At minimum, a serious scaffold repository should define:
 - frontend guidelines
 - backend guidelines
 - build and packaging guidelines
+- postmortem-derived hard constraints
 - release and versioning guidelines
 - CI/CD guidelines
 - one minimal runnable template
@@ -130,5 +141,6 @@ It should avoid embedding business-specific operating guidance unless that guida
 4. Frontend guidelines
 5. Backend guidelines
 6. Build and packaging guidelines
-7. Release and versioning guidelines
-8. CI/CD guidelines
+7. Postmortem-derived hard constraints
+8. Release and versioning guidelines
+9. CI/CD guidelines

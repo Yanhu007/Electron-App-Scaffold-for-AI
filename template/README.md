@@ -33,6 +33,7 @@ Additional scaffold commands:
 - `npm run build:vite`: alternate Vite production build path for migration phases
 - `npm run dev:wp`: example Webpack watch path when a project still keeps Webpack-based production tooling
 - `npm run typecheck`: template TypeScript validation
+- `npm test`: minimal unit test baseline with Vitest
 - `npm run check:file-length`: source file length policy check
 - `npm run check:bundle-size`: artifact size policy check after `npm run build`
 - `npm run release:notes`: generate scaffold-style release notes from recent git history
@@ -45,6 +46,7 @@ Additional scaffold commands:
 - `src/main/main.ts`: BrowserWindow bootstrap
 - `src/preload/main.ts`: safe bridge surface
 - `src/shared/*`: minimal shared IPC contract and handler registration
+- `src/shared/runtime-info.ts`: small example of shared logic that can be unit tested
 - `src/renderer/*`: minimal React UI
 
 ## Next Steps

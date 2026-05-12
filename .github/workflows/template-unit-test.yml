@@ -1,0 +1,32 @@
+name: Template Unit Test
+
+on:
+  pull_request:
+    branches: ['**']
+    paths:
+      - 'template/**'
+      - '.github/workflows/template-unit-test.yml'
+
+jobs:
+  template-unit-test:
+    name: Template Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package-lock.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Run template unit tests
+        working-directory: template
+        run: npm test

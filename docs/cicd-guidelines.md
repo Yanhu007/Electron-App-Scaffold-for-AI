@@ -33,10 +33,12 @@ Recommended PR checks:
 For a minimal scaffold repository, a practical baseline can be:
 
 - typecheck workflow
+- unit test workflow
 - template build workflow
 - file-length policy workflow
 - bundle-size workflow
-- release dry-run or release workflow
+- release preparation workflow
+- release publish workflow
 
 Recommended release checks:
 

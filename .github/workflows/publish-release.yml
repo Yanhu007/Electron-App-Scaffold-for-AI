@@ -1,0 +1,60 @@
+name: Publish Template Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Prepared template version to publish, for example 0.1.1'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    name: Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package-lock.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Verify prepared version
+        shell: bash
+        run: |
+          ACTUAL_VERSION=$(node -p "require('./template/package.json').version")
+          if [ "$ACTUAL_VERSION" != "${{ inputs.version }}" ]; then
+            echo "Expected prepared version ${{ inputs.version }}, got $ACTUAL_VERSION"
+            exit 1
+          fi
+
+      - name: Run validation suite
+        working-directory: template
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+          npm run build:vite
+          npm run check:file-length
+          npm run check:bundle-size
+
+      - name: Create release tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "template-v${{ inputs.version }}"
+          git push origin "template-v${{ inputs.version }}"
