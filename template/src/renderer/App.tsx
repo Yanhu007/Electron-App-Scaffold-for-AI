@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import type { RuntimeInfo } from '../shared/app-contract';
+import type { RuntimeInfo, UpdateStatus } from '../shared/app-contract';
 import { getBrandConfig } from '../shared/brand';
 
 const brand = getBrandConfig(import.meta.env.VITE_BRAND || 'kosmos');
 
 export function App() {
   const [runtimeInfo, setRuntimeInfo] = useState<RuntimeInfo | null>(null);
+  const [updateStatus, setUpdateStatus] = useState<UpdateStatus | null>(null);
 
   useEffect(() => {
     window.appBridge.getRuntimeInfo().then(setRuntimeInfo).catch(() => {
@@ -13,6 +14,14 @@ export function App() {
         platform: 'unknown',
         arch: 'unknown',
         electronVersion: 'unknown',
+      });
+    });
+
+    window.appBridge.getUpdateStatus().then(setUpdateStatus).catch(() => {
+      setUpdateStatus({
+        available: false,
+        channel: 'unknown',
+        currentVersion: 'unknown',
       });
     });
   }, []);
@@ -32,6 +41,12 @@ export function App() {
       </p>
       <p>
         Electron: <strong>{runtimeInfo?.electronVersion ?? 'loading'}</strong>
+      </p>
+      <p>
+        Update Channel: <strong>{updateStatus?.channel ?? 'loading'}</strong>
+      </p>
+      <p>
+        Update Available: <strong>{updateStatus ? String(updateStatus.available) : 'loading'}</strong>
       </p>
       <p>
         Extend this template only after defining architecture, governance, build,

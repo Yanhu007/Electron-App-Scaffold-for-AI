@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import { registerAppHandlers } from '../shared/app-ipc';
 import { getBrandConfig } from '../shared/brand';
+import { initializeUpdater } from './updater';
 
 registerAppHandlers(ipcMain);
 
@@ -30,6 +31,7 @@ function createWindow(): void {
 }
 
 app.whenReady().then(() => {
+  initializeUpdater({ brandName: brand.name });
   createWindow();
 
   app.on('activate', () => {

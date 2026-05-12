@@ -126,11 +126,21 @@ Recommended assets:
 
 Use [updater-and-publishing-guidelines.md](updater-and-publishing-guidelines.md).
 
-### 2.8 Frontend Guidelines
+### 2.8 Logging and Operations
+
+Recommended assets:
+
+- logging and operations guide
+- runtime logger helper
+- updater diagnostics sample
+
+Use [logging-and-operations-guidelines.md](logging-and-operations-guidelines.md).
+
+### 2.9 Frontend Guidelines
 
 Use [frontend-guidelines.md](frontend-guidelines.md).
 
-### 2.9 Backend Guidelines
+### 2.10 Backend Guidelines
 
 Use [backend-guidelines.md](backend-guidelines.md).
 
@@ -143,6 +153,7 @@ At minimum, a serious scaffold repository should define:
 - backend guidelines
 - build and packaging guidelines
 - brand management guidelines
+- logging and operations guidelines
 - postmortem-derived hard constraints
 - release and versioning guidelines
 - updater and publishing guidelines
@@ -164,7 +175,8 @@ It should avoid embedding business-specific operating guidance unless that guida
 5. Backend guidelines
 6. Build and packaging guidelines
 7. Brand management guidelines
-8. Postmortem-derived hard constraints
-9. Release and versioning guidelines
-10. Updater and publishing guidelines
-11. CI/CD guidelines
+8. Logging and operations guidelines
+9. Postmortem-derived hard constraints
+10. Release and versioning guidelines
+11. Updater and publishing guidelines
+12. CI/CD guidelines

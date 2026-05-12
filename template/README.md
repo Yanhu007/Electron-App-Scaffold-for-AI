@@ -41,6 +41,7 @@ Additional scaffold commands:
 - `npm run release:notes`: generate scaffold-style release notes from recent git history
 - `npm run prepare:release:patch|minor|major`: minimal version bump and changelog preparation flow
 - `npm run pack -- --brand=pm-studio`: package a specific brand with electron-builder
+- `npm run dist:publish`: example publish path for brand-aware release artifacts
 
 ## Purpose of the Files
 
@@ -52,6 +53,7 @@ Additional scaffold commands:
 - `src/preload/main.ts`: safe bridge surface
 - `src/shared/*`: minimal shared IPC contract and handler registration
 - `src/shared/brand.ts`: shared brand selection helper
+- `src/shared/logger.ts`: minimal structured log helper
 - `src/shared/runtime-info.ts`: small example of shared logic that can be unit tested
 - `src/renderer/*`: minimal React UI
 
