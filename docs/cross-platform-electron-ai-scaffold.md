@@ -1,24 +1,26 @@
 # Cross-platform Electron AI App Scaffold
 
-This document captures the core architecture and engineering patterns for a production-oriented AI desktop app scaffold.
+This document captures the framework-level architecture and engineering patterns that an AI system can reuse when generating or modifying a cross-platform Electron application.
 
-## 1. Target Product Shape
+## 1. Target Shape
 
-This scaffold is designed for applications that need:
+This scaffold is designed for repositories that need to teach AI how to work within an Electron-based AI application architecture.
+
+Typical characteristics include:
 
 - A desktop UI built with Electron
 - A React + TypeScript renderer
-- AI chat or agent workflows
-- Streaming model output
-- Tool execution
+- AI-assisted workflows
+- Streaming output
+- Tool or external-runtime execution
 - Local persistence
 - Cross-platform distribution
 
 It is not intended for:
 
-- Simple webview wrappers
-- Single-page demos without local capabilities
-- Pure frontend chat toys
+- Product-specific business playbooks
+- Domain-specific workflows tied to one company or one app
+- Guidance that only makes sense for a single feature surface
 
 ## 2. Core Architecture Principles
 
@@ -125,7 +127,7 @@ docs/
 
 ## 4. Required Foundation Capabilities
 
-The scaffold should support these from the beginning:
+The scaffold should encode these capabilities from the beginning:
 
 - multi-window architecture
 - typed IPC
@@ -187,4 +189,4 @@ Native modules require package-time validation, not just development-time valida
 
 ## 8. Scaffold Outcome
 
-This scaffold is not just an Electron template. It is an architecture baseline for a real AI desktop app with strong boundaries, recovery behavior, and cross-platform discipline.
+This scaffold is not a business solution template. It is a reusable architectural baseline that teaches AI systems how to reason about boundaries, recovery behavior, packaging discipline, and repository structure in an Electron AI codebase.

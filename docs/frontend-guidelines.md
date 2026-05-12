@@ -1,6 +1,6 @@
 # Frontend Guidelines
 
-This document defines frontend development rules for the renderer side of an AI-focused Electron application.
+This document defines renderer-side development rules that AI systems can follow when generating or modifying frontend code in an Electron AI application.
 
 ## 1. Scope
 
@@ -35,9 +35,9 @@ Use this order:
 
 Large components become the main source of long-term maintenance cost.
 
-### 2.4 Streaming UI Must Avoid Full-Tree Re-Renders
+### 2.4 High-Frequency UI Must Avoid Full-Tree Re-Renders
 
-High-frequency token updates should be handled with localized rendering strategies.
+High-frequency updates should be handled with localized rendering strategies.
 
 ## 3. Recommended Structure
 
@@ -48,9 +48,9 @@ High-frequency token updates should be handled with localized rendering strategi
 - `states/` for app-wide state
 - local `*.atom.ts` files for nearby shared state
 
-## 4. Session and Streaming Rules
+## 4. State Transition and Streaming Rules
 
-- do not flash stale session content during session switch
+- do not flash stale state during entity or session switch
 - use explicit loading/opening states
 - respect user scroll escape during streaming
 - keep completed-message rendering separate from in-flight rendering
@@ -63,9 +63,9 @@ High-frequency token updates should be handled with localized rendering strategi
 
 ## 6. UX Rules
 
-- render interactive requests inline with the conversation when possible
+- render interruptive or decision-required UI inline with the current context when possible
 - show recoverable errors locally instead of escalating everything globally
-- preserve message hierarchy between content, tool calls, and artifacts
+- preserve hierarchy between primary content, runtime metadata, and generated artifacts
 
 ## 7. Security Rules
 
@@ -78,7 +78,7 @@ High-frequency token updates should be handled with localized rendering strategi
 After frontend changes, verify:
 
 1. route transitions still work
-2. session switch does not show stale history
-3. streaming remains progressive and stable
-4. interactive requests render and resolve correctly
+2. state transitions do not show stale content
+3. high-frequency rendering remains progressive and stable
+4. interruptive UI flows render and resolve correctly
 5. loading and empty states remain correct

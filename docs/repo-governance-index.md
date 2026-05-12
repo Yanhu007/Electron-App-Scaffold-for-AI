@@ -1,10 +1,10 @@
 # Repository Governance Index
 
-This document is the operating index for organizing a production-oriented AI Electron repository.
+This document is the operating index for organizing a guidance-first AI Electron scaffold repository.
 
 ## 1. Governance Layers
 
-Use four layers:
+Use four layers so AI can distinguish between instruction types:
 
 ### 1.1 Prompts
 
@@ -93,7 +93,7 @@ Use [backend-guidelines.md](backend-guidelines.md).
 
 ## 3. Recommended Repo Baseline
 
-At minimum, a serious repository should define:
+At minimum, a serious scaffold repository should define:
 
 - a README
 - frontend guidelines
@@ -102,6 +102,8 @@ At minimum, a serious repository should define:
 - build and packaging documentation
 - a changelog strategy
 - review expectations
+
+It should avoid embedding business-specific operating guidance unless that guidance is intentionally separated from the reusable scaffold layer.
 
 ## 4. Reading Order
 

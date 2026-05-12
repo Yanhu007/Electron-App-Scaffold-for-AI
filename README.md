@@ -1,21 +1,23 @@
 # Electron App Scaffold for AI
 
-A practical scaffold blueprint for building cross-platform AI desktop applications with Electron.
+A guidance-first scaffold repository for teaching AI how to design and evolve a cross-platform Electron application for AI workloads.
 
-This repository focuses on the architecture, engineering rules, and repository organization needed for a production-grade AI desktop app, rather than a toy chat demo.
+This repository is intentionally instructional. Its purpose is to transfer mature engineering patterns, architectural boundaries, and repository rules to AI systems and developers. It is not a business template and it does not encode product-specific features.
 
 ## What This Repo Is
 
-This repo is a starter knowledge base for building an AI-native Electron application with:
+This repo is a scaffold knowledge base that teaches:
 
 - Electron multi-process architecture
 - React + TypeScript renderer
 - Main-process AI runtime
 - Typed IPC boundaries
-- Streaming chat UX
-- Tool execution and MCP integration
+- Streaming interaction patterns
+- Tool-runtime integration patterns
 - Cross-platform packaging for Windows, macOS, and Linux
 - Release, CI/CD, and engineering governance guidance
+
+This repo does not prescribe any specific business workflow, vertical domain, or end-user product behavior.
 
 ## Document Map
 
@@ -47,24 +49,27 @@ This scaffold is designed around the following baseline:
 
 This repository currently provides:
 
-- Architecture and engineering guidance
-- Frontend and backend conventions
-- Repo governance guidance
+- Architecture guidance
+- Framework-level engineering conventions
+- Frontend and backend decision rules
+- Repository governance guidance
 
 This repository does not yet provide:
 
 - A fully runnable application template
 - Generated project boilerplate
 - Example production code modules
+- Product-specific feature guidance
+- Vertical-specific business logic
 
-Those can be added in a later phase once the architecture and repo shape are stable.
+Those should only be added later if they can remain generic and reusable.
 
 ## Next Evolution
 
-The next logical step for this repo is to add:
+The next logical step for this repo is to add reusable scaffold assets such as:
 
 1. A minimal runnable Electron + React + TypeScript template
 2. A typed IPC starter implementation
-3. A streaming chat page example
+3. A generic streaming interaction example
 4. A GitHub Actions starter pipeline
 5. Packaging examples for Windows, macOS, and Linux

@@ -1,6 +1,6 @@
 # Backend Guidelines
 
-This document defines backend and runtime rules for the main process side of an AI-focused Electron application.
+This document defines main-process and runtime rules that AI systems can follow when generating or modifying backend code in an Electron AI application.
 
 ## 1. Scope
 
@@ -59,15 +59,15 @@ Recommended separation:
 - streaming service
 - tool executor
 - interaction service
-- session service
+- state/persistence service
 
-### 3.3 Compression Should Run in the Active Send Path
+### 3.3 Compression or Heavy Context Work Should Run in the Active Execution Path
 
-Avoid heavy context compression during passive session initialization.
+Avoid heavy context compression or equivalent expensive context maintenance during passive initialization.
 
-## 4. Tool and MCP Rules
+## 4. Tool and External Runtime Rules
 
-- distinguish built-in tools from external tools
+- distinguish built-in tools from external runtimes
 - support partial tool results where needed
 - validate file, command, and external operations through security boundaries
 - propagate cancellation through tool execution paths
