@@ -1,5 +1,8 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
+import { registerAppHandlers } from '../shared/app-ipc';
+
+registerAppHandlers(ipcMain);
 
 function createWindow(): void {
   const window = new BrowserWindow({

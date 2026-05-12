@@ -1,0 +1,32 @@
+name: Template Type Check
+
+on:
+  pull_request:
+    branches: ['**']
+    paths:
+      - 'template/**'
+      - '.github/workflows/template-typecheck.yml'
+
+jobs:
+  typecheck-template:
+    name: Type Check Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Type check template
+        working-directory: template
+        run: npx tsc --noEmit

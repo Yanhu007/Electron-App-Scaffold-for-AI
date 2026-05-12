@@ -1,0 +1,32 @@
+name: Template Build
+
+on:
+  pull_request:
+    branches: ['**']
+    paths:
+      - 'template/**'
+      - '.github/workflows/template-build.yml'
+
+jobs:
+  build-template:
+    name: Build Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Build template
+        working-directory: template
+        run: npm run build

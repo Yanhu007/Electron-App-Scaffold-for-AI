@@ -1,19 +1,14 @@
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
+import { APP_CHANNELS, type AppBridge, type RuntimeInfo } from '../shared/app-contract';
 
-contextBridge.exposeInMainWorld('appBridge', {
-  getRuntimeInfo: () => ({
-    platform: process.platform,
-    arch: process.arch,
-  }),
-});
+const appBridge: AppBridge = {
+  getRuntimeInfo: () => ipcRenderer.invoke(APP_CHANNELS.getRuntimeInfo) as Promise<RuntimeInfo>,
+};
+
+contextBridge.exposeInMainWorld('appBridge', appBridge);
 
 declare global {
   interface Window {
-    appBridge: {
-      getRuntimeInfo: () => {
-        platform: string;
-        arch: string;
-      };
-    };
+    appBridge: AppBridge;
   }
 }

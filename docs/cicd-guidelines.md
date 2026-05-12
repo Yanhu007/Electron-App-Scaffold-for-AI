@@ -29,6 +29,7 @@ Recommended PR checks:
 - end-to-end tests when appropriate
 - file-length or complexity policy checks
 - bundle-size or artifact-delta checks when relevant
+- template-specific typecheck or build checks when the repository ships starter templates
 
 Recommended release checks:
 

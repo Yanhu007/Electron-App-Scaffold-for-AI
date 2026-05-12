@@ -11,7 +11,7 @@ This template is intentionally limited to:
 - one Electron main process entry
 - one preload bridge
 - one React renderer entry
-- one trivial typed bridge example
+- one minimal typed IPC starter example
 
 It does not include:
 
@@ -34,6 +34,7 @@ It does not include:
 - `electron.vite.config.ts`: build configuration for main, preload, and renderer
 - `src/main/main.ts`: BrowserWindow bootstrap
 - `src/preload/main.ts`: safe bridge surface
+- `src/shared/*`: minimal shared IPC contract and handler registration
 - `src/renderer/*`: minimal React UI
 
 ## Next Steps
