@@ -16,6 +16,10 @@ Use prompts for operational templates such as:
 - release-note generation
 - doc update workflow
 - code review workflow
+- architecture guidance generation
+- frontend guidance generation
+- backend guidance generation
+- governance guidance generation
 
 ### 1.2 Workflows
 
@@ -108,7 +112,8 @@ It should avoid embedding business-specific operating guidance unless that guida
 ## 4. Reading Order
 
 1. README
-2. Scaffold overview
-3. Frontend guidelines
-4. Backend guidelines
-5. Build and release docs
+2. `.github/copilot-instructions.md`
+3. Scaffold overview
+4. Frontend guidelines
+5. Backend guidelines
+6. Build and release docs

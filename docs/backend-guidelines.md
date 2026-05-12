@@ -1,8 +1,10 @@
 # Backend Guidelines
 
-This document defines main-process and runtime rules that AI systems can follow when generating or modifying backend code in an Electron AI application.
+## Purpose
 
-## 1. Scope
+Teach AI systems how to generate and modify main-process and runtime code safely in an Electron AI application.
+
+## Scope
 
 Applies to:
 
@@ -10,48 +12,25 @@ Applies to:
 - preload boundaries
 - shared IPC contracts
 - persistence
-- tools and MCP runtime
+- tools and external runtimes
 - packaging-sensitive runtime behavior
 
-## 2. Key Rules
+## Do
 
-### 2.1 Main Process Owns the Trusted Runtime
+- Keep auth, orchestration, persistence, native integration, security validation, and observability in the main process.
+- Define IPC surfaces once in shared contracts.
+- Keep UI-critical IPC short.
+- Design runtime logic around fallback and recovery.
+- Separate runtime state from persisted state.
+- Split large runtime systems by responsibility.
+- Run heavy context maintenance in active execution paths, not passive initialization paths.
+- Distinguish built-in tools from external runtimes.
+- Support partial results where the runtime can surface progressive output.
+- Serialize order-dependent writes.
+- Use structured logging.
+- Centralize platform-specific logic.
 
-The main process should own:
-
-- auth
-- AI orchestration
-- tool execution
-- persistence
-- native integration
-- security validation
-- logging and analytics
-
-### 2.2 Typed IPC Is the Default
-
-New IPC surfaces should be defined once in shared contracts and reused across main, preload, and renderer.
-
-### 2.3 Critical-Path IPC Must Stay Short
-
-Do not block sign-in, navigation, or app readiness on non-essential background work.
-
-### 2.4 Runtime Logic Must Be Recovery-Oriented
-
-Assume providers, tools, streams, and native integrations can fail and design explicit fallback paths.
-
-## 3. Runtime Design Rules
-
-### 3.1 Separate Runtime State From Persisted State
-
-Do not directly persist transient runtime internals such as:
-
-- cancellation tokens
-- event senders
-- temporary execution state
-
-### 3.2 Split Large Runtime Systems by Responsibility
-
-Recommended separation:
+Recommended runtime separation:
 
 - prompt service
 - context service
@@ -61,49 +40,26 @@ Recommended separation:
 - interaction service
 - state/persistence service
 
-### 3.3 Compression or Heavy Context Work Should Run in the Active Execution Path
+## Don't
 
-Avoid heavy context compression or equivalent expensive context maintenance during passive initialization.
+- Do not block sign-in, navigation, or readiness on non-essential background work.
+- Do not persist transient internals such as cancellation tokens or temporary event senders.
+- Do not allow raw renderer inputs to cross trust boundaries without validation.
+- Do not use unbounded sequential awaits over network or LLM calls.
+- Do not mix packaging-sensitive runtime dependencies into build-only dependency sections.
+- Do not scatter platform-specific behavior across unrelated business logic.
 
-## 4. Tool and External Runtime Rules
+## Decide
 
-- distinguish built-in tools from external runtimes
-- support partial tool results where needed
-- validate file, command, and external operations through security boundaries
-- propagate cancellation through tool execution paths
+When a boundary is cross-process, decide in favor of typed IPC.
 
-## 5. Persistence Rules
+When a runtime path can fail independently, decide in favor of explicit fallback and bounded retry behavior.
 
-- keep JSON schema changes backward-compatible unless migration is implemented
-- serialize sensitive or order-dependent writes
-- decouple disk persistence cadence from UI update cadence
+When a write can race or overwrite another write, decide in favor of serialized persistence.
 
-## 6. Concurrency Rules
+When an operation is expensive and not required for immediate UI progress, decide to move it off the critical path.
 
-- avoid unbounded sequential awaits over network or LLM calls
-- use bounded concurrency or all-settled patterns where appropriate
-- make cancellation flow through the entire execution chain
-
-## 7. Observability Rules
-
-- use one structured logger for main-process runtime logs
-- add trace points to critical flows such as startup, sign-in, streaming, tool execution, and persistence
-
-## 8. Cross-Platform and Packaging Rules
-
-- centralize platform-specific logic
-- keep runtime dependencies in the correct package sections
-- validate native modules in packaged builds, not only dev mode
-- design for multi-brand and multi-platform constraints from the start
-
-## 9. Security Rules
-
-- validate renderer inputs in main
-- prevent path traversal and command injection
-- prefer default-deny boundaries for sensitive operations
-- avoid leaking auth artifacts into untrusted surfaces
-
-## 10. Validation Checklist
+## Validate
 
 After backend changes, verify:
 

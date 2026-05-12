@@ -1,8 +1,10 @@
 # Frontend Guidelines
 
-This document defines renderer-side development rules that AI systems can follow when generating or modifying frontend code in an Electron AI application.
+## Purpose
 
-## 1. Scope
+Teach AI systems how to generate and modify renderer-side code safely in an Electron AI application.
+
+## Scope
 
 Applies to:
 
@@ -10,70 +12,52 @@ Applies to:
 - routes and pages
 - local state
 - renderer IPC clients
-- streaming UI behavior
+- high-frequency rendering paths
 
-## 2. Key Rules
+## Do
 
-### 2.1 Renderer Owns UI, Not Privileged Work
+- Treat the renderer as a UI layer, not a privileged runtime.
+- Prefer the smallest state scope that solves the problem.
+- Keep app-wide state separate from feature-local shared state.
+- Use explicit loading, opening, and transition states.
+- Separate completed rendering from in-flight rendering.
+- Localize high-frequency updates.
+- Lazy load heavy modules.
+- Keep interruptive UI flows close to their current context.
+- Surface recoverable errors locally when possible.
 
-The renderer should not directly own:
+Recommended structure:
 
-- file system access
-- child process access
-- native module access
-- sensitive credential storage
+- `components/` for UI pieces
+- `routes/` for route assembly
+- `lib/` for renderer helpers and adapters
+- `ipc/` for typed feature clients
+- `states/` for app-wide state
+- local `*.atom.ts` files for nearby shared state
 
-### 2.2 Prefer the Smallest State Scope
+## Don't
 
-Use this order:
+- Do not access file systems, child processes, or native modules directly from the renderer.
+- Do not store sensitive credentials in renderer state.
+- Do not place fast-changing state too high in the tree.
+- Do not allow state transitions to flash stale content.
+- Do not combine completed rendering and in-flight rendering in one uncontrolled path.
+- Do not bypass preload for privileged operations.
+- Do not trust raw external content without validation.
+
+## Decide
+
+Use this state-placement order:
 
 1. props for parent-child communication
 2. local shared atom state for nearby components
 3. context only for truly ambient concerns
 
-### 2.3 Split Large Components Early
+When a path updates frequently, decide in favor of localized rendering and localized subscriptions.
 
-Large components become the main source of long-term maintenance cost.
+When an interaction interrupts the user flow, decide in favor of inline, contextual UI before adding separate overlays.
 
-### 2.4 High-Frequency UI Must Avoid Full-Tree Re-Renders
-
-High-frequency updates should be handled with localized rendering strategies.
-
-## 3. Recommended Structure
-
-- `components/` for UI pieces
-- `routes/` for routing assembly
-- `lib/` for renderer-side helpers and adapters
-- `ipc/` for typed feature clients
-- `states/` for app-wide state
-- local `*.atom.ts` files for nearby shared state
-
-## 4. State Transition and Streaming Rules
-
-- do not flash stale state during entity or session switch
-- use explicit loading/opening states
-- respect user scroll escape during streaming
-- keep completed-message rendering separate from in-flight rendering
-
-## 5. Performance Rules
-
-- lazy load heavy modules such as Mermaid and Monaco
-- avoid placing fast-changing state too high in the tree
-- keep message list updates localized
-
-## 6. UX Rules
-
-- render interruptive or decision-required UI inline with the current context when possible
-- show recoverable errors locally instead of escalating everything globally
-- preserve hierarchy between primary content, runtime metadata, and generated artifacts
-
-## 7. Security Rules
-
-- never bypass preload for privileged operations
-- do not trust raw external content without validation
-- keep secrets out of renderer state and storage
-
-## 8. Validation Checklist
+## Validate
 
 After frontend changes, verify:
 

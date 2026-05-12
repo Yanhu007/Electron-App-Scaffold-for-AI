@@ -1,88 +1,33 @@
 # Cross-platform Electron AI App Scaffold
 
-This document captures the framework-level architecture and engineering patterns that an AI system can reuse when generating or modifying a cross-platform Electron application.
+## Purpose
 
-## 1. Target Shape
+Teach AI systems how to reason about a reusable Electron AI application architecture without encoding business-specific product behavior.
 
-This scaffold is designed for repositories that need to teach AI how to work within an Electron-based AI application architecture.
+## Scope
 
-Typical characteristics include:
+This scaffold is meant for repositories that need:
 
-- A desktop UI built with Electron
-- A React + TypeScript renderer
-- AI-assisted workflows
-- Streaming output
-- Tool or external-runtime execution
-- Local persistence
-- Cross-platform distribution
+- Electron multi-process boundaries
+- a renderer UI layer
+- a trusted main-process runtime
+- typed IPC
+- local persistence
+- high-frequency streaming or runtime updates
+- cross-platform distribution
 
-It is not intended for:
+It is not meant to describe one product's business workflow.
 
-- Product-specific business playbooks
-- Domain-specific workflows tied to one company or one app
-- Guidance that only makes sense for a single feature surface
+## Do
 
-## 2. Core Architecture Principles
+- Put trusted runtime concerns in the main process.
+- Treat typed IPC as the default cross-process boundary.
+- Keep UI-critical paths fast.
+- Design for failure, recovery, and cancellation.
+- Encode cross-platform packaging discipline from the start.
+- Organize the repository so architecture, guidelines, and governance are distinct layers.
 
-### 2.1 Main Process Owns the Trusted Runtime
-
-The main process should own:
-
-- AI orchestration
-- Auth
-- Tool execution
-- File and process access
-- Persistence
-- Logging
-- Updates
-- Native module loading
-
-The renderer should only own UI and user interaction.
-
-### 2.2 Typed IPC Is the Default Boundary
-
-All renderer-to-main communication should go through typed contracts.
-
-Recommended pattern:
-
-- shared contract definitions
-- preload bridge with explicit allowlist
-- renderer-side typed clients
-- main-side typed handlers
-
-### 2.3 UI Critical Paths Must Stay Fast
-
-Any IPC that gates UI transitions should avoid long blocking work.
-
-Examples:
-
-- sign-in completion
-- session open
-- navigation
-- app readiness
-
-Background work should be fire-and-forget when the UI does not depend on its completion.
-
-### 2.4 Design for Failure and Recovery
-
-AI runtime systems are inherently failure-prone.
-
-The scaffold should assume:
-
-- providers can timeout
-- tools can fail midway
-- streams can cancel
-- context windows can overflow
-- external integrations can become unavailable
-
-Every major path should have:
-
-- logging
-- fallback behavior
-- bounded retries where justified
-- explicit cancellation behavior
-
-## 3. Suggested Repository Shape
+Suggested repository shape:
 
 ```text
 src/
@@ -125,9 +70,7 @@ docs/
   repo-governance-index.md
 ```
 
-## 4. Required Foundation Capabilities
-
-The scaffold should encode these capabilities from the beginning:
+Encode these capabilities from the beginning:
 
 - multi-window architecture
 - typed IPC
@@ -138,7 +81,37 @@ The scaffold should encode these capabilities from the beginning:
 - security validation for file and command operations
 - cross-platform packaging awareness
 
-## 5. AI-Specific Engineering Requirements
+## Don't
+
+- Do not let renderer code absorb privileged runtime concerns.
+- Do not spread raw string-based IPC across the codebase.
+- Do not block UI transitions on non-essential background work.
+- Do not assume one provider, one tokenizer, or one runtime integration model.
+- Do not embed company-specific product flows into scaffold guidance.
+
+## Decide
+
+When a concern crosses process boundaries, decide in favor of shared contracts and typed IPC.
+
+When a concern is runtime-critical, decide in favor of main-process ownership.
+
+When a capability is packaging-sensitive or platform-sensitive, decide to model it explicitly instead of hiding it in incidental implementation details.
+
+When guidance can be product-specific or reusable, decide in favor of the reusable form.
+
+## Validate
+
+Check that the scaffold teaches at least these reusable engineering concerns:
+
+- process boundaries
+- IPC boundaries
+- persistence boundaries
+- cancellation behavior
+- packaging and dependency rules
+- cross-platform behavior
+- governance and CI/CD structure
+
+## Additional Guidance
 
 ### 5.1 Streaming Is a First-Class Concern
 
@@ -187,6 +160,6 @@ Key rule:
 
 Native modules require package-time validation, not just development-time validation.
 
-## 8. Scaffold Outcome
+## Outcome
 
-This scaffold is not a business solution template. It is a reusable architectural baseline that teaches AI systems how to reason about boundaries, recovery behavior, packaging discipline, and repository structure in an Electron AI codebase.
+This scaffold should function as a reusable instruction layer for AI systems and developers, not as a product template or a business solution blueprint.
