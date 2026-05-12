@@ -24,6 +24,9 @@ This repo does not prescribe any specific business workflow, vertical domain, or
 - [Scaffold Overview](docs/cross-platform-electron-ai-scaffold.md)
 - [Frontend Guidelines](docs/frontend-guidelines.md)
 - [Backend Guidelines](docs/backend-guidelines.md)
+- [Build and Packaging Guidelines](docs/build-and-packaging-guidelines.md)
+- [Release and Versioning Guidelines](docs/release-and-versioning-guidelines.md)
+- [CI/CD Guidelines](docs/cicd-guidelines.md)
 - [Repository Governance](docs/repo-governance-index.md)
 - [.github/copilot-instructions.md](.github/copilot-instructions.md)
 
@@ -33,7 +36,10 @@ This repo does not prescribe any specific business workflow, vertical domain, or
 2. Then read [Scaffold Overview](docs/cross-platform-electron-ai-scaffold.md)
 3. Then read [Frontend Guidelines](docs/frontend-guidelines.md)
 4. Then read [Backend Guidelines](docs/backend-guidelines.md)
-5. Use [Repository Governance](docs/repo-governance-index.md) as the operating index for repo structure, CI/CD, release, and contribution rules
+5. Then read [Build and Packaging Guidelines](docs/build-and-packaging-guidelines.md)
+6. Then read [Release and Versioning Guidelines](docs/release-and-versioning-guidelines.md)
+7. Then read [CI/CD Guidelines](docs/cicd-guidelines.md)
+8. Use [Repository Governance](docs/repo-governance-index.md) as the operating index for repo structure, CI/CD, release, and contribution rules
 
 ## Intended Stack
 

@@ -61,6 +61,8 @@ Recommended assets:
 - release workflow
 - release process doc
 
+Use [release-and-versioning-guidelines.md](release-and-versioning-guidelines.md).
+
 ### 2.2 CI/CD
 
 Recommended assets:
@@ -71,6 +73,8 @@ Recommended assets:
 - bundle-size workflow
 - file-length workflow
 
+Use [cicd-guidelines.md](cicd-guidelines.md).
+
 ### 2.3 Versioning
 
 Recommended assets:
@@ -79,6 +83,8 @@ Recommended assets:
 - semantic versioning process
 - release commands
 
+Use [release-and-versioning-guidelines.md](release-and-versioning-guidelines.md).
+
 ### 2.4 Build System
 
 Recommended assets:
@@ -86,6 +92,8 @@ Recommended assets:
 - compile-system doc
 - packaging guide
 - release workflow
+
+Use [build-and-packaging-guidelines.md](build-and-packaging-guidelines.md).
 
 ### 2.5 Frontend Guidelines
 
@@ -102,6 +110,9 @@ At minimum, a serious scaffold repository should define:
 - a README
 - frontend guidelines
 - backend guidelines
+- build and packaging guidelines
+- release and versioning guidelines
+- CI/CD guidelines
 - release and CI/CD workflows
 - build and packaging documentation
 - a changelog strategy
@@ -116,4 +127,6 @@ It should avoid embedding business-specific operating guidance unless that guida
 3. Scaffold overview
 4. Frontend guidelines
 5. Backend guidelines
-6. Build and release docs
+6. Build and packaging guidelines
+7. Release and versioning guidelines
+8. CI/CD guidelines
