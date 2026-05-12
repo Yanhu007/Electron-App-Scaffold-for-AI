@@ -63,6 +63,7 @@ This repository currently provides:
 - Framework-level engineering conventions
 - Frontend and backend decision rules
 - Repository governance guidance
+- Minimal brand-management and packaging scaffold assets
 - A minimal runnable template with no business logic
 
 This repository does not yet provide:
@@ -84,7 +85,7 @@ The next logical step for this repo is to add reusable scaffold assets such as:
 3. A GitHub Actions starter pipeline
 4. Packaging examples for Windows, macOS, and Linux
 
-The repository now also includes a minimal unit-test baseline, separated release preparation and publishing workflows, and a postmortem-derived hard-constraint layer.
+The repository now also includes a minimal unit-test baseline, separated release preparation and publishing workflows, a postmortem-derived hard-constraint layer, and a minimal multi-brand packaging baseline.
 
 ## Minimal Template
 

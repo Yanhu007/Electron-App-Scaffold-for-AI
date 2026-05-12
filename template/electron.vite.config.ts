@@ -1,6 +1,8 @@
 import { defineConfig } from 'electron-vite';
 import react from '@vitejs/plugin-react';
 
+const brand = process.env.BRAND || 'kosmos';
+
 export default defineConfig({
   main: {
     build: {
@@ -21,6 +23,9 @@ export default defineConfig({
   renderer: {
     plugins: [react()],
     root: 'src/renderer',
+    define: {
+      'import.meta.env.VITE_BRAND': JSON.stringify(brand),
+    },
     build: {
       outDir: '../../dist-electron/renderer',
       rollupOptions: {

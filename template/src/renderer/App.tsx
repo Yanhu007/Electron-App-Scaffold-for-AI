@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { RuntimeInfo } from '../shared/app-contract';
+import { getBrandConfig } from '../shared/brand';
+
+const brand = getBrandConfig(import.meta.env.VITE_BRAND || 'kosmos');
 
 export function App() {
   const [runtimeInfo, setRuntimeInfo] = useState<RuntimeInfo | null>(null);
@@ -16,8 +19,11 @@ export function App() {
 
   return (
     <main style={{ fontFamily: 'sans-serif', padding: '2rem', lineHeight: 1.5 }}>
-      <h1>Electron App Scaffold for AI</h1>
+      <h1>{brand.productName}</h1>
       <p>This is a minimal runnable scaffold template with a typed IPC starter.</p>
+      <p>
+        Brand: <strong>{brand.name}</strong>
+      </p>
       <p>
         Platform: <strong>{runtimeInfo?.platform ?? 'loading'}</strong>
       </p>

@@ -31,6 +31,7 @@ Recommended build topics to define:
 - production entry points
 - main / preload / renderer build responsibilities
 - environment-variable injection rules
+- brand-selection rules
 - artifact locations
 - package-time validation steps
 
@@ -54,6 +55,12 @@ When deciding dependency placement, prefer:
 
 - `dependencies` or `optionalDependencies` for runtime requirements
 - `devDependencies` for build tools, test tools, and non-runtime assets
+
+When deciding whether a scaffold should model branding, prefer a dedicated brand layer when:
+
+- product name, app id, icons, or user-data paths vary by distribution
+- packaging metadata must change per brand
+- the repository intentionally supports multiple product identities from one codebase
 
 When deciding build strategy during a migration period, a valid transitional pattern is:
 

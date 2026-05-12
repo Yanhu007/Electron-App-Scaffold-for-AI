@@ -1,13 +1,19 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import { registerAppHandlers } from '../shared/app-ipc';
+import { getBrandConfig } from '../shared/brand';
 
 registerAppHandlers(ipcMain);
+
+const brand = getBrandConfig(process.env['BRAND']);
+app.setName(brand.productName);
+app.setPath('userData', path.join(app.getPath('appData'), brand.userDataName));
 
 function createWindow(): void {
   const window = new BrowserWindow({
     width: 1200,
     height: 800,
+    title: brand.productName,
     webPreferences: {
       preload: path.join(__dirname, '../preload/main.js'),
       contextIsolation: true,
