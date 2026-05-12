@@ -20,6 +20,7 @@ Use prompts for operational templates such as:
 - frontend guidance generation
 - backend guidance generation
 - governance guidance generation
+- runnable scaffold generation
 
 ### 1.2 Workflows
 
@@ -113,6 +114,7 @@ At minimum, a serious scaffold repository should define:
 - build and packaging guidelines
 - release and versioning guidelines
 - CI/CD guidelines
+- one minimal runnable template
 - release and CI/CD workflows
 - build and packaging documentation
 - a changelog strategy

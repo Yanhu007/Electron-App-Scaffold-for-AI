@@ -1,0 +1,24 @@
+{
+  "name": "electron-app-scaffold-for-ai-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist-electron/main/main.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview"
+  },
+  "dependencies": {
+    "electron": "^35.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@vitejs/plugin-react": "^4.4.1",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19"
+  }
+}

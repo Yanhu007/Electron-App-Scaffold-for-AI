@@ -61,6 +61,7 @@ This repository currently provides:
 - Framework-level engineering conventions
 - Frontend and backend decision rules
 - Repository governance guidance
+- A minimal runnable template with no business logic
 
 This repository does not yet provide:
 
@@ -76,8 +77,11 @@ Those should only be added later if they can remain generic and reusable.
 
 The next logical step for this repo is to add reusable scaffold assets such as:
 
-1. A minimal runnable Electron + React + TypeScript template
-2. A typed IPC starter implementation
-3. A generic streaming interaction example
-4. A GitHub Actions starter pipeline
-5. Packaging examples for Windows, macOS, and Linux
+1. A more advanced typed IPC starter implementation
+2. A generic streaming interaction example
+3. A GitHub Actions starter pipeline
+4. Packaging examples for Windows, macOS, and Linux
+
+## Minimal Template
+
+See [template/README.md](template/README.md) for the business-neutral runnable scaffold.
