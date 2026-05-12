@@ -1,0 +1,83 @@
+name: Template Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+jobs:
+  release-template:
+    name: Release Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: template/package-lock.json
+
+      - name: Install template dependencies
+        working-directory: template
+        run: npm install
+
+      - name: Prepare release version
+        working-directory: template
+        run: node scripts/prepare-release.mjs ${{ inputs.version_type }}
+
+      - name: Build webpack production path
+        working-directory: template
+        run: npm run build
+
+      - name: Build vite production path
+        working-directory: template
+        run: npm run build:vite
+
+      - name: Check file length policy
+        working-directory: template
+        run: npm run check:file-length
+
+      - name: Check bundle size
+        working-directory: template
+        run: npm run check:bundle-size
+
+      - name: Generate release notes
+        working-directory: template
+        run: npm run release:notes
+
+      - name: Read prepared version
+        id: version
+        shell: bash
+        run: echo "value=$(node -p \"require('./template/package.json').version\")" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release notes artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: template-release-notes-v${{ steps.version.outputs.value }}
+          path: template/release-notes.md
+
+      - name: Create release tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add template/package.json template/CHANGELOG.md
+          git commit -m "chore(release): prepare template v${{ steps.version.outputs.value }}"
+          git tag "template-v${{ steps.version.outputs.value }}"
+          git push origin HEAD:main --follow-tags

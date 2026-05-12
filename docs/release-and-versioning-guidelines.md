@@ -32,6 +32,7 @@ Recommended baseline:
 - one documented release path
 - one release-note generation path
 - scripted version bump commands such as `prepare:release:patch|minor|major`
+- one manual or gated release workflow that runs the same validation path before tagging
 
 ## Don't
 

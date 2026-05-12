@@ -32,6 +32,10 @@ Additional scaffold commands:
 
 - `npm run build:vite`: alternate Vite production build path for migration phases
 - `npm run dev:wp`: example Webpack watch path when a project still keeps Webpack-based production tooling
+- `npm run typecheck`: template TypeScript validation
+- `npm run check:file-length`: source file length policy check
+- `npm run check:bundle-size`: artifact size policy check after `npm run build`
+- `npm run release:notes`: generate scaffold-style release notes from recent git history
 - `npm run prepare:release:patch|minor|major`: minimal version bump and changelog preparation flow
 
 ## Purpose of the Files

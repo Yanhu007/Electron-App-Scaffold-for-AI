@@ -26,10 +26,17 @@ Recommended PR checks:
 
 - typecheck
 - unit tests
-- end-to-end tests when appropriate
 - file-length or complexity policy checks
 - bundle-size or artifact-delta checks when relevant
 - template-specific typecheck or build checks when the repository ships starter templates
+
+For a minimal scaffold repository, a practical baseline can be:
+
+- typecheck workflow
+- template build workflow
+- file-length policy workflow
+- bundle-size workflow
+- release dry-run or release workflow
 
 Recommended release checks:
 
